@@ -1,6 +1,3 @@
-from ast import Try
-
-
 myList = [1, 2, 3]
 myIter = iter(myList)
 

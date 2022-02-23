@@ -1,5 +1,7 @@
+from re import A
 import time
 
+# Iterador
 class FiboIter():
     def __init__(self, terminos):
         self.terminos = terminos
@@ -27,12 +29,25 @@ class FiboIter():
                 self.count += 1
                 return self.n2
 
+# Generador
+def fiboGen(max=None):
+    n1, n2, count = 0, 1, 0
+    while not max or max > count:
+        count += 1
+        yield n1
+        n1, n2 = n2, n1 + n2
+
 
 
 if __name__ == '__main__':
     terminos = input('Cuantos terminos deseas? ')
     assert terminos.isnumeric() and int(terminos)>0, 'Debes ingresar un numero entero mayor a cero.'
-    fibo = FiboIter(int(terminos))
-    for num in fibo:
-        print(num)
+    # fibo = FiboIter(int(terminos))
+    # for num in fibo:
+    #     print(num)
+    #     time.sleep(0.2)
+
+    fibo = fiboGen(int(terminos))
+    for element in fibo:
+        print(element)
         time.sleep(0.2)
